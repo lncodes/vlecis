@@ -2,7 +2,7 @@
 using Lncodes.Module.Fathgen;
 using Lncodes.Module.Fathgen.Extension;
 
-namespace Lncodes.Pacakge.Vlecis.Configuration
+namespace Lncodes.Pacakge.Vlecis
 {
     public sealed class VlecisConfig
     {

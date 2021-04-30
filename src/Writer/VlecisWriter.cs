@@ -3,7 +3,7 @@ using System.Text;
 using System.Reflection;
 using System.Collections;
 
-namespace Lncodes.Pacakge.Vlecis.Writer
+namespace Lncodes.Pacakge.Vlecis
 {
     internal sealed class VlecisWriter
     {
@@ -29,13 +29,11 @@ namespace Lncodes.Pacakge.Vlecis.Writer
         /// <param name="info"></param>
         internal void WriteRow<T>(T instance, FieldInfo info) where T : class
         {
-            if (!info.IsDefined(typeof(IgnoreAttribute)))
-            {
-                var builder = new StringBuilder();
-                WriteName(info, ref builder);
-                WriteValue(info.GetValue(instance), ref builder);
-                Result.Append(builder.AppendLine());
-            }
+            if (info.IsDefined(typeof(IgnoreAttribute))) return;
+            var builder = new StringBuilder();
+            WriteName(info, ref builder);
+            WriteValue(info.GetValue(instance), ref builder);
+            Result.Append(builder.AppendLine());
         }
 
         /// <summary>
@@ -45,9 +43,9 @@ namespace Lncodes.Pacakge.Vlecis.Writer
         /// <param name="stringBuilder"></param>
         private void WriteName(MemberInfo info, ref StringBuilder stringBuilder)
         {
-            var nameAttribute = (NameAttribute)Attribute.GetCustomAttribute(info, typeof(NameAttribute));
-            if (nameAttribute is null) stringBuilder.Append(_vlecisWriterFormater.FormatHeader(info.Name));
-            else stringBuilder.Append(_vlecisWriterFormater.FormatHeader(nameAttribute.Name));
+            var nameAttribute = info.GetCustomAttribute<NameAttribute>();
+            var fieldName = nameAttribute is null ? info.Name : nameAttribute.Name;
+            stringBuilder.Append(_vlecisWriterFormater.FormatHeader(fieldName));
         }
         
         /// <summary>
@@ -57,18 +55,19 @@ namespace Lncodes.Pacakge.Vlecis.Writer
         /// <param name="stringBuilder"></param>
         private void WriteValue(object value, ref StringBuilder stringBuilder)
         {
+            if (value is null) throw new ArgumentNullException();
             switch (value)
             {
                 case IEnumerable _ when !(value is string || value is IDictionary):
                     foreach (var item in value as IEnumerable)
-                        stringBuilder.Append(_vlecisWriterFormater.FormatNormalValue(item));
+                        stringBuilder.Append(_vlecisWriterFormater.FormatNormalField(item));
                     break;
                 case IDictionary _:
                     foreach (DictionaryEntry item in value as IDictionary)
-                        stringBuilder.Append(_vlecisWriterFormater.FormatDictionaryValue(item.Key, item.Value));
+                        stringBuilder.Append(_vlecisWriterFormater.FormatDictionaryField(item.Key, item.Value));
                     break;
                 default:
-                    stringBuilder.Append(_vlecisWriterFormater.FormatNormalValue(value));
+                    stringBuilder.Append(_vlecisWriterFormater.FormatNormalField(value));
                     break;
             }
         }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using Lncodes.Pacakge.Vlecis.Reader;
-using Lncodes.Pacakge.Vlecis.Writer;
-using Lncodes.Pacakge.Vlecis.Configuration;
 
 namespace Lncodes.Pacakge.Vlecis
 {

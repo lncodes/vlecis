@@ -1,4 +1,4 @@
-﻿namespace Lncodes.Pacakge.Vlecis.Writer
+﻿namespace Lncodes.Pacakge.Vlecis
 {
     internal sealed class VlecisWriterFormater
     {
@@ -25,7 +25,7 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        internal string FormatNormalValue<T>(T value) =>
+        internal string FormatNormalField<T>(T value) =>
             $"\"{value}\"{_delimiter}";
 
         /// <summary>
@@ -36,7 +36,7 @@
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        internal string FormatDictionaryValue<TKey, TValue>(TKey key, TValue value) =>
+        internal string FormatDictionaryField<TKey, TValue>(TKey key, TValue value) =>
             $"\"[{key}, {value}]\"{_delimiter}";
     }
 }

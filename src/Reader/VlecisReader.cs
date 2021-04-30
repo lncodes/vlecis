@@ -5,11 +5,11 @@ using System.Collections;
 using Lncodes.Module.Collecter;
 using System.Collections.Generic;
 
-namespace Lncodes.Pacakge.Vlecis.Reader
+namespace Lncodes.Pacakge.Vlecis
 {
     internal sealed class VlecisReader
     {
-        private readonly Dictionary<string, string> _rawData;
+        private readonly Dictionary<string, string> _rawVariabelData;
         private readonly VlecisReaderFormater _vlecisReaderFormarter;
         private readonly CollectionConverterFacade _collectionConverterFacade = new CollectionConverterFacade();
 
@@ -21,7 +21,7 @@ namespace Lncodes.Pacakge.Vlecis.Reader
         internal VlecisReader(string delimiter, string csvFile)
         {
             _vlecisReaderFormarter = new VlecisReaderFormater(delimiter);
-            _rawData = _vlecisReaderFormarter.FormatFile(csvFile);
+            _rawVariabelData = _vlecisReaderFormarter.FormatFile(csvFile);
         }
 
         /// <summary>
@@ -35,17 +35,19 @@ namespace Lncodes.Pacakge.Vlecis.Reader
         {
             if (info.IsDefined(typeof(IgnoreAttribute))) return default;
             var fieldType = info.FieldType;
-            var infoValue = info.GetValue(instance);
-            var formatedRow = _vlecisReaderFormarter.FormatRow(_rawData[info.Name]);
-            switch (infoValue)
+            var fieldValue = info.GetValue(instance);
+            var nameAttribute = info.GetCustomAttribute<NameAttribute>();
+            var fieldName = nameAttribute is null ? info.Name : nameAttribute.Name;
+            var rawCsvFieldValue = _vlecisReaderFormarter.FormatRow(_rawVariabelData[fieldName]);
+            switch (fieldValue)
             {
-                case IEnumerable _ when !(infoValue is string || infoValue is IDictionary):
-                    return _collectionConverterFacade.ConvertRegulerCollection(formatedRow, fieldType);
+                case IEnumerable _ when !(fieldValue is string || fieldValue is IDictionary):
+                    return _collectionConverterFacade.ConvertRegulerCollection(rawCsvFieldValue, fieldType);
                 case IDictionary _:
-                    var rowDictionary = _vlecisReaderFormarter.FormatDictionaryValue(formatedRow);
+                    var rowDictionary = _vlecisReaderFormarter.FormatDictionaryField(rawCsvFieldValue);
                     return _collectionConverterFacade.ConvertDictionaryCollection(rowDictionary, fieldType);
                 default:
-                    return Convert.ChangeType(formatedRow.First(), fieldType);
+                    return Convert.ChangeType(rawCsvFieldValue.First(), fieldType);
             }
         }
     }

@@ -17,7 +17,7 @@ namespace Lncodes.Module.Collecter
         internal IEnumerable ConvertCollection<TValue>(IEnumerable<TValue> data, Type convertedCollectionType)
         {
             if (convertedCollectionType.Equals(typeof(string)) || !(convertedCollectionType.GetInterface(nameof(IDictionary)) is null))
-                throw new ArgumentException("Cant convert string or dictionary types");
+                throw new ArgumentException("Doesn't support string or dictionary types conversions");
             var collectionIndex = 0;
             var valueType = GetCollectionValueTypes(convertedCollectionType);
             var newCollectionInstance = Array.CreateInstance(valueType, data.Count());

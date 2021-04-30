@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Lncodes.Pacakge.Vlecis.Reader
+namespace Lncodes.Pacakge.Vlecis
 {
     internal sealed class VlecisReaderFormater
     {
@@ -50,7 +50,7 @@ namespace Lncodes.Pacakge.Vlecis.Reader
         /// </summary>
         /// <param name="csvValue"></param>
         /// <returns></returns>
-        internal Dictionary<string, string> FormatDictionaryValue(IEnumerable<string> csvValue)
+        internal Dictionary<string, string> FormatDictionaryField(IEnumerable<string> csvValue)
         {
             var dictionary = new Dictionary<string, string>();
             foreach (var item in csvValue)

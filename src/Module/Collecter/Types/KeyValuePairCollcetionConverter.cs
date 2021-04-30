@@ -17,7 +17,7 @@ namespace Lncodes.Module.Collecter
         internal IDictionary ConvertKeyValuePair<TKey, TValue>(IDictionary<TKey, TValue> data, Type convertedCollectionType)
         {
             if (convertedCollectionType.GetInterface(nameof(IDictionary)) is null)
-                throw new ArgumentException("Only can convert key value pair collection types");
+                throw new ArgumentException("Can only convert key-value pair types");
             var valueType = GetCollectionValueTypes(convertedCollectionType);
             var dictionary = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(valueType));
             foreach (var item in data)
