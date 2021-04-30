@@ -1,4 +1,4 @@
-﻿namespace Lncodes.Module.Fathgen.Extension
+﻿namespace Lncodes.Module.Fathgen
 {
     public enum CsvFileExtension
     {

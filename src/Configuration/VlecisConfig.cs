@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Lncodes.Module.Fathgen;
-using Lncodes.Module.Fathgen.Extension;
 
 namespace Lncodes.Pacakge.Vlecis
 {
