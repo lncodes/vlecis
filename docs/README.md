@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h3 align="center"><b>{ Project Name }</b></h3>
+<h3 align="center"><b>Vlecis</b></h3>
 <p align="center">{ Project Bedge }</p>
 
 <p align="center">
@@ -20,25 +20,26 @@
 
 <h2 id="getting-started"> 🏁 Getting Started </h2>
 
-{ *Description of the project* }, to see documentation of this project you can visit our [Website](<project-blog-URL>).
+Vlecis is C# Export/Import CSV Package. This package will Export an variable data into a CSV file or Importing data from CSV file into an actual variable format easily, to see documentation of this project you can visit our [Website](https://lncodes.com/studio/package/csharp-export-import-csv/).
 
 ### 🔨 Build With
-|                 |   Name        | Version       |
-|:---------------:|:-------------:|:-------------:|
-| { *Framework* } | { *Laravel* } |   { *8.0* }   |
+| Tools           |   Name          | Version       |
+|:---------------:|:-------------:  |:-------------:|
+| SDK             | *.NET Core*     |  3.1          |
+| IDE             | *Visual Studio* | 2019          |
 ### ✅ Prerequisites
-- { *List prerequisites before setup the project* }
+- 
 ### 🚀 Project Setup 
-{ *Steps to setup the project until can be run* }
 1. Clone or download this project.
 ``` bash 
-git clone <project-repo-URL>
+git clone https://github.com/lncodes/vlecis.git
 ```
-2. etc
+2. Open your project in the IDE.
+3. Add this package depedency into your project.
 
 <h2 id="project-scope">🎯 Project Scope</h2>
 
-This project will use to { *Objective of the project* }
+The main objective of this project is want to help C# developer to export/importing CSV data easily.
 
 <h2 id="contribute">💖 Contribute</h2>
 
@@ -46,7 +47,7 @@ Want to contribute to this project? Please read our project [Contribution Guidel
 
 <h2 id="discuss">💬 Discuss</h2>
 
-If you have any questions about this project, you can go to [discussion forum](<project-discussion-URL>) or directly comment to this project [documentation](<project-blog-URL>).
+If you have any questions about this project, you can go to [discussion forum](https://github.com/lncodes/vlecis/discussions) or directly comment to this project [documentation](https://lncodes.com/studio/package/csharp-export-import-csv/).
 
 <h2 id="support">💌 Support</h2>
 
