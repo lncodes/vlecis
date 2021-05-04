@@ -10,7 +10,7 @@
 - [ ] Other (Please describe it)
 
 ## Requirements
-- [ ] My pull request use [labels](pull-request-label-URL).
+- [ ] My pull request use [labels](https://github.com/lncodes/vlecis/labels).
 - [ ] I have read [CONTRIBUTING.md](CONTRIBUTING.md).
 - [ ] My code pass all the Github CI/CD test.
 - [ ] My code follows the code style of the project.

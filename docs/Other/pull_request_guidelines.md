@@ -28,4 +28,4 @@ After creating pull request, our collaborator will review your pull request and 
 
 When your pull request has been accepted by our collaborator, we will merge your new change in our development branch. 
 
->Every { project-date-update } of the month, we will merge all development branches to the master branch and we will update the project doc.
+>Every 10th of the month, we will merge all development branches to the master branch and we will update the project doc.
