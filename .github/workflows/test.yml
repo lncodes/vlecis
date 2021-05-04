@@ -20,5 +20,7 @@ jobs:
         dotnet-version: 3.1.x
     - name: Install Dependencies
       run: dotnet restore
+    - name: Build Project
+      run: dotnet build --no-restore
     - name: Run Test
       run: dotnet test --no-build --verbosity normal
