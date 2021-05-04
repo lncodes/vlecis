@@ -9,9 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
     steps:
     - uses: actions/checkout@v2
-    - working-dictionary: ./src
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
       with:
